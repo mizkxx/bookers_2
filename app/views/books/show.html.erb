@@ -1,0 +1,38 @@
+<%= render 'books/list', books: @post_books %>
+
+
+
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+<%= link_to(@user.name, "/users/#{@user.id}") %>
+<table>
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Opnion</th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @books.each do |book| %>
+			<% user = book.user %>
+  			<%= link_to( user.name, "/users/#{user.id}" ) %>
+  			<%= link_to(book.content, "/books/#{book.id}") %>
+		<% end %>
+		<% @books.each do |book| %>
+			<tr>
+				<td><%= book.title %></td>
+				<td><%= book.body %></td>
+    		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<% if @book.user == current_user %>
+  <%= link_to "削除", book_path(@book), method: :delete %>
+<% end %>
+
+<%= link_to "back", books_path, class: "back" %>
