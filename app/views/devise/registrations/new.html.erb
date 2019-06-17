@@ -5,34 +5,38 @@
 
                 <div class="form-user style-1 rounded has-shadow-1">
                     <div class="form-header text-center">
-                        <h2 class="form-header-title">ユーザー登録</h2>
+                        <h2 class="form-header-title">Sign up</h2>
                     </div>
                     <div class="form-body">
+<table>
 
                       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>
     <div class="form-group has-icon">
-        <label class="control-label sr-only" for="inputName">Name</label>
-        <%= f.text_field :name, autofocus: true, class:"form-control", id:"inputName", placeholder:"名前"%>
+        <tr><h5>Name</h5></tr>
+        <tr><%= f.text_field :name, autofocus: true, class:"form-control", id:"inputName" %></tr>
         <span class="fa fa-user form-control-icon" aria-hidden="true"></span>
     </div>
     <div class="form-group has-icon">
-        <label class="control-label sr-only" for="inputEmail">Email</label>
-        <%= f.email_field :email, class:"form-control", id:"inputEmail", placeholder:"メールアドレス"%>
+        <h5>Email</h5>
+        <%= f.email_field :email, class:"form-control", id:"inputEmail" %>
         <span class="fa fa-envelope form-control-icon" aria-hidden="true"></span>
     </div>
     <div class="form-group has-icon">
-        <label class="control-label sr-only" for="inputPassword">Password</label>
-        <%= f.password_field :password, autocomplete: "off", class:"form-control", id:"inputPassword", placeholder:"パスワード" %>
+        <h5>Password (6 characters minimum)</h5>
+        <%= f.password_field :password, autocomplete: "off", class:"form-control", id:"inputPassword" %>
         <span class="fa fa-lock form-control-icon" aria-hidden="true"></span>
     </div>
     <div class="form-group has-icon">
-        <label class="control-label sr-only" for="inputConfirmPassword">Password</label>
-        <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control", id:"inputConfirmPassword", placeholder:"パスワード確認" %>
+        <h5>Password confirmation</h5>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control", id:"inputConfirmPassword" %>
          <span class="fa fa-check-circle-o form-control-icon" aria-hidden="true"></span>
     </div>
-        <%= f.submit "サインアップ", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+        <div class="actions">
+    <input type="submit" name="commit" value="Sign up" class="btn btn-success" data-disable-with="Sign up" />
+  </div>
     <% end %>
+    <li><%= link_to "Log in", new_user_session_path %></li>
 
                     </div>
                 </div>

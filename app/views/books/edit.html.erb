@@ -1,7 +1,16 @@
-<%= render 'books/list', books: @books %>
 
 <h1>Editing Book</h1>
-<%= form_for(@book) do |f| %>
+<%= form_for(@edit_book) do |f| %>
+ <% if @edit_book.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= @edit_book.errors.count %>件のerrorが発生しました。</h4>
+      <ul>
+      <% @edit_book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
     <h4>Title</h4>
     <%= f.text_field :title %>
     <h4>Opnion</h4>
@@ -10,3 +19,6 @@
 <% end %>
 
 <%= link_to "back", books_path, class: "back" %>
+</div>
+</div>
+</div>

@@ -5,32 +5,34 @@
 
                 <div class="form-user style-1 rounded has-shadow-1">
                     <div class="form-header text-center">
-                        <h2 class="form-header-title">ユーザーログイン</h2>
+                        <h2 class="form-header-title">Log in</h2>
                     </div>
                     <div class="form-body">
 
                       <div class="row">
                           <div class="col-xs-offset-1 col-xs-10">
-                              <div class="text-center">
-                                  <h4>メールアドレスと<br>パスワードを入力してください。</h4>
-                              </div>
                           </div>
                       </div>
 
                        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group has-icon">
-      <label class="control-label sr-only" for="inputEmail">Email</label>
-      <%= f.email_field :email, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"メールアドレス"%>
+      <h5>Name</h5>
+      <%= f.text_field :name, autofocus: true, class:"form-control", id:"inputName" %>
       <span class="fa fa-envelope form-control-icon" aria-hidden="true"></span>
     </div>
     <div class="form-group has-icon">
-      <label class="control-label sr-only" for="inputEmail">Password</label>
-      <%= f.password_field :password, autocomplete: "off", class:"form-control", id:"inputEmail", placeholder:"パスワード" %>
+      <h5>Password</h5>
+      <%= f.password_field :password, autocomplete: "off", class:"form-control", id:"inputEmail" %>
       <span class="fa fa-lock form-control-icon" aria-hidden="true"></span>
     </div>
-    <%= f.submit "サインイン", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
-  <% end %> 
-
+    <div class="actions">
+    <input type="submit" name="commit" value="Log in" class="btn btn-primary" data-disable-with="Log in" />
+  </div>
+  <% end %>
+  <li class="">
+    <%= link_to "Sign up", new_user_registration_path %>
+  </li>
+  <a href="/users/password/new">Forgot your password?</a><br />
                     </div>
                 </div>
             </div>
